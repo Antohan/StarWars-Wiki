@@ -1,15 +1,12 @@
 <template>
-  <div id="app">
-    home
-  </div>
+  <vue-extend-layouts />
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
+<script>
+import VueExtendLayouts from 'vue-extend-layout';
+
+export default {
+  name: 'App',
+  components: { VueExtendLayouts },
+};
+</script>

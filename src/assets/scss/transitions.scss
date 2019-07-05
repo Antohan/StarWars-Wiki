@@ -1,0 +1,27 @@
+/**************************/
+/* Simple fade transition */
+/**************************/
+.fade-enter-active {
+  transition: opacity 0.25s ease-out;
+}
+
+.fade-leave-active {
+  transition: opacity 0.25s ease-in;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/***************************************/
+/* Vertical slide transition with fade */
+/***************************************/
+.top-slide-fade-enter-active, .top-slide-fade-leave-active {
+  transition: all .3s;
+}
+
+.top-slide-fade-enter, .top-slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}

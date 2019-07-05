@@ -3,6 +3,9 @@ import Router from 'vue-router';
 
 import App from './App';
 
+import auth from '@/apps/auth/routes';
+import core from '@/apps/core/routes';
+
 Vue.use(Router);
 
 export default new Router({
@@ -11,8 +14,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: 'welcome',
       name: 'home',
       component: App,
     },
+    ...core,
+    ...auth,
   ],
 });

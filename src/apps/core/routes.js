@@ -1,4 +1,12 @@
+import App from '@/App';
+
 const routes = [
+  {
+    path: '/',
+    redirect: 'welcome',
+    name: 'home',
+    component: App,
+  },
   {
     path: '/welcome',
     name: 'welcome',

@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <div>welcome</div>
-    <router-link :to="{name: 'login'}">login</router-link>
-  </div>
+  <section :class="$style.container">
+    <div>Welcome</div>
+  </section>
 </template>
 
 <script>
@@ -11,6 +10,11 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" module>
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

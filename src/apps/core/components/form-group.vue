@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ invalid: hasErrors }">
+  <div :class="[$style.host, { invalid: hasErrors }]">
     <slot/>
     <div v-if="hasErrors">
       <div
@@ -23,12 +23,18 @@ export default {
 <style lang="scss" module>
 @import "@/assets/scss/app.scss";
 
+.host {
+  position: relative;
+}
+
 .invalid label span {
   color: $error-color !important;
 }
 
 .error {
+  position: absolute;
   font-size: 0.8em;
   color: $error-color;
+  transition: all .3s;
 }
 </style>

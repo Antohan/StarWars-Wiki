@@ -39,13 +39,12 @@ export default {
 @import "@/assets/scss/app.scss";
 
 .input {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   label span {
     display: block;
     font-size: 0.9em;
     margin-bottom: 5px;
-    color: $base-color;
   }
 
   input {

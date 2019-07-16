@@ -4,6 +4,8 @@ import router from '@/router';
 import store from '@/store';
 
 import '@/plugins/fontawsome';
+import '@/plugins/vuelidate';
+import '@/plugins/base-components';
 
 import '@/assets/scss/app.scss';
 

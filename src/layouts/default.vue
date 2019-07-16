@@ -1,39 +1,29 @@
 <template>
-  <el-container style="height:100%;">
-    <el-header :class="$style.header">
-      <el-button v-on:click="show = !show" type="text" :class="$style.menuBtn">
+  <section style="height:100%;">
+    <header :class="$style.header">
+      <button v-on:click="show = !show" type="text" :class="$style.menuBtn">
         <fa-icon icon="bars" />
-      </el-button>
+      </button>
 
-      <el-dropdown v-if="isAuth" trigger="click">
-        <span :class="$style.accountLink">
-          <fa-icon icon="user-circle" />
-        </span>
+      <router-link :to="{name: 'login'}" :class="$style.login">Log in</router-link>
+    </header>
 
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>My Account</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-
-      <router-link v-else :to="{name: 'login'}" :class="$style.login">Log in</router-link>
-    </el-header>
-
-    <el-container>
+    <div>
       <transition name="left-slide">
-        <el-aside v-show="show" :class="$style.aside">
-          <el-menu>
+        <aside v-show="show" :class="$style.aside">
+          <div>
             <router-link :to="{name: 'login'}" :class="$style.login">
-              <el-menu-item index="1">Log in</el-menu-item>
+              <div index="1">Log in</div>
             </router-link>
-          </el-menu>
-        </el-aside>
+          </div>
+        </aside>
       </transition>
 
-      <el-main :classe="$style.content">
+      <div :classe="$style.content">
         <router-view />
-      </el-main>
-    </el-container>
-  </el-container>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -55,6 +45,7 @@ export default {
 
 .header {
   width: 100%;
+  height: 60px;
   z-index: 80;
   box-shadow: 2px 2px 5px 0 rgba(0,0,0,.095);
   display: flex;
@@ -65,6 +56,11 @@ export default {
 .menuBtn {
   font-size: 24px;
   color: $base-color;
+  margin: 0 10px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 
   &:active,
   &:hover,
@@ -81,6 +77,7 @@ export default {
 .login {
   text-decoration: none;
   color: $base-color;
+  margin: 0 10px;
 }
 
 .aside {

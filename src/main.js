@@ -3,7 +3,6 @@ import App from '@/App';
 import router from '@/router';
 import store from '@/store';
 
-import '@/plugins/element-ui';
 import '@/plugins/fontawsome';
 
 import '@/assets/scss/app.scss';

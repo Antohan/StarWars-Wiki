@@ -1,15 +1,15 @@
 
 <template>
   <form-group
+    v-bind="$attrs"
+    :validator="v"
     :name="name"
-    :label="label"
-    class="input" >
+    :label="label">
     <label>
-      <span>{{label}}</span>
+      <span>{{ label }}</span>
       <input
-        v-bind="$attrs"
         v-model="model"
-        :type="type" />
+        :type="type">
     </label>
   </form-group>
 </template>
@@ -21,6 +21,7 @@ export default {
     value: { type: String, default: '' },
     name: { type: String, required: true },
     label: { type: String, required: true },
+    v: { type: Object, required: true },
   },
   computed: {
     model: {
@@ -34,29 +35,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-@import "@/assets/scss/app.scss";
-
-.input {
-  margin-bottom: 20px;
-
-  label span {
-    display: block;
-    font-size: 0.9em;
-    margin-bottom: 5px;
-  }
-
-  input {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-  }
-
-  &.invalid input {
-    border-color: $error-color;
-  }
-}
-</style>

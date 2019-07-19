@@ -26,3 +26,37 @@ button {
     background-color: $base-color;
   }
 }
+
+.input {
+  position: relative;
+  margin-bottom: 20px;
+
+  label span {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+
+  &.invalid input {
+    border-color: $error-color;
+  }
+
+  .invalid label span {
+    color: $error-color;
+  }
+
+  .error {
+    position: absolute;
+    font-size: 0.8em;
+    color: $error-color;
+    transition: all .3s;
+  }
+}

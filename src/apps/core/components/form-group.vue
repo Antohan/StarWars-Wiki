@@ -1,11 +1,17 @@
 <template>
-  <div :class="[$style.host, { invalid: hasErrors }]">
-    <slot/>
-    <div v-if="hasErrors">
+  <div :class="['input', { invalid: hasAnyErrors }]">
+    <slot />
+    <div v-if="hasAnyErrors">
       <div
         v-for="(error, index) in activeErrorMessages"
         :key="index"
-        :class="$style.error">
+        class="error">
+        {{ error }}
+      </div>
+      <div
+        v-for="(error, index) in serverErrors"
+        :key="index"
+        class="error">
         {{ error }}
       </div>
     </div>
@@ -17,24 +23,24 @@ import { singleErrorExtractorMixin } from 'vuelidate-error-extractor';
 
 export default {
   mixins: [singleErrorExtractorMixin],
+  props: {
+    serverErrors: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  computed: {
+    hasAnyErrors() {
+      return this.hasErrors || this.serverErrors.length;
+    },
+    isFullyValid() {
+      return this.isValid && !this.serverErrors.length;
+    },
+  },
 };
 </script>
 
 <style lang="scss" module>
 @import "@/assets/scss/app.scss";
 
-.host {
-  position: relative;
-}
-
-.invalid label span {
-  color: $error-color !important;
-}
-
-.error {
-  position: absolute;
-  font-size: 0.8em;
-  color: $error-color;
-  transition: all .3s;
-}
 </style>

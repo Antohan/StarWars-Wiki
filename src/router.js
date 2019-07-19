@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import auth from '@/apps/auth/routes';
-import core from '@/apps/core/routes';
+import auth from '@/app/auth/routes';
+import core from '@/app/core/routes';
 
 Vue.use(Router);
 

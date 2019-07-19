@@ -2,7 +2,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/apps/auth/pages/login-page.vue'),
+    component: () => import('@/app/auth/pages/login-page.vue'),
     meta: {
       layout: 'auth-layout',
     },
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/registration',
     name: 'registration',
-    component: () => import('@/apps/auth/pages/registration-page.vue'),
+    component: () => import('@/app/auth/pages/registration-page.vue'),
     meta: {
       layout: 'auth-layout',
     },

@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/welcome',
     name: 'welcome',
-    component: () => import('@/apps/core/pages/welcome-page.vue'),
+    component: () => import('@/app/core/pages/welcome-page.vue'),
     meta: {
       layout: 'default',
     },
@@ -18,7 +18,7 @@ const routes = [
   {
     path: '*',
     name: 'error',
-    component: () => import('@/apps/core/pages/404-page.vue'),
+    component: () => import('@/app/core/pages/404-page.vue'),
     meta: {
       layout: 'default',
     },

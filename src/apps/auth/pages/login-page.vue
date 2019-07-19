@@ -1,18 +1,42 @@
 <template>
   <div :class="$style.auth">
-    <router-link :to="{name: 'home'}" :class="[$style.link, $style.back]">x</router-link>
+    <router-link
+      :to="{name: 'home'}"
+      :class="[$style.link, $style.back]">
+      x
+    </router-link>
 
     Sing In
 
-    <form-wrapper :validator="$v.form" :class="$style.form">
-      <form @submit.prevent="submit" :model="form" ref="form">
-        <core-input v-model="form.email" name="email" label="Email" />
-        <core-input v-model="form.password" type="password" name="password" label="Password" />
-        <button type="submit">Submit</button>
+    <form-wrapper
+      :validator="$v.form"
+      :class="$style.form">
+      <form
+        ref="form"
+        :model="form"
+        @submit.prevent="submit">
+        <core-input
+          v-model="form.email"
+          :v="$v.form.email"
+          :server-errors="serverErrors.email"
+          name="email"
+          label="Email" />
+        <core-input
+          v-model="form.password"
+          :v="$v.form.password"
+          :server-errors="serverErrors.password"
+          type="password"
+          name="password"
+          label="Password" />
+        <button type="submit">
+          Submit
+        </button>
       </form>
     </form-wrapper>
 
-    <router-link :to="{name: 'registration'}" :class="$style.link">
+    <router-link
+      :to="{name: 'registration'}"
+      :class="$style.link">
       Registration
     </router-link>
   </div>
@@ -20,6 +44,7 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators';
+import { mapActions } from 'vuex';
 
 export default {
   validations: {
@@ -33,8 +58,10 @@ export default {
       email: '',
       password: '',
     },
+    serverErrors: {},
   }),
   methods: {
+    ...mapActions({ signIn: 'auth/SIGN_IN' }),
     submit() {
       this.$v.$touch();
 
@@ -42,7 +69,22 @@ export default {
         return;
       }
 
-      console.log('Form is valid!');
+      this.signIn(this.form)
+        .then(() => {
+          this.$router.push({ name: 'welcome' });
+        })
+        .catch((error) => {
+          if (error.message === 'INVALID_PASSWORD') {
+            this.serverErrors = {
+              password: ['Invalid password'],
+            };
+          }
+          if (error.message === 'EMAIL_NOT_FOUND') {
+            this.serverErrors = {
+              email: ['Email not found'],
+            };
+          }
+        });
     },
   },
 };

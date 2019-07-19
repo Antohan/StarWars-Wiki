@@ -1,8 +1,14 @@
 <template>
   <div :class="$style.registration">
-    <router-link :to="{name: 'home'}" :class="[$style.link, $style.back]">x</router-link>
+    <router-link
+      :to="{name: 'home'}"
+      :class="[$style.link, $style.back]">
+      x
+    </router-link>
 
-    <router-link :to="{name: 'login'}" :class="$style.link">
+    <router-link
+      :to="{name: 'login'}"
+      :class="$style.link">
       Login
     </router-link>
   </div>

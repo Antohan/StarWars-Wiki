@@ -1,6 +1,8 @@
 <template>
   <section :class="$style.container">
-    <transition name="top-slide-fade" mode="out-in">
+    <transition
+      name="top-slide-fade"
+      mode="out-in">
       <router-view />
     </transition>
   </section>
@@ -8,7 +10,7 @@
 
 <script>
 export default {
-  name: 'authLayout',
+  name: 'AuthLayout',
 };
 </script>
 

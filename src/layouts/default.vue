@@ -1,19 +1,32 @@
 <template>
   <section style="height:100%;">
     <header :class="$style.header">
-      <button v-on:click="show = !show" type="text" :class="$style.menuBtn">
+      <button
+        type="text"
+        :class="$style.menuBtn"
+        @click="show = !show">
         <fa-icon icon="bars" />
       </button>
 
-      <router-link :to="{name: 'login'}" :class="$style.login">Log in</router-link>
+      <router-link
+        :to="{name: 'login'}"
+        :class="$style.login">
+        Log in
+      </router-link>
     </header>
 
     <div>
       <transition name="left-slide">
-        <aside v-show="show" :class="$style.aside">
+        <aside
+          v-show="show"
+          :class="$style.aside">
           <div>
-            <router-link :to="{name: 'login'}" :class="$style.login">
-              <div index="1">Log in</div>
+            <router-link
+              :to="{name: 'login'}"
+              :class="$style.login">
+              <div index="1">
+                Log in
+              </div>
             </router-link>
           </div>
         </aside>
@@ -30,7 +43,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'defaultLayout',
+  name: 'DefaultLayout',
   data: () => ({
     show: false,
   }),

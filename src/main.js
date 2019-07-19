@@ -7,6 +7,8 @@ import '@/plugins/fontawsome';
 import '@/plugins/vuelidate';
 import '@/plugins/base-components';
 
+import '@/axios-interceptor';
+
 import '@/assets/scss/app.scss';
 
 Vue.config.productionTip = false;

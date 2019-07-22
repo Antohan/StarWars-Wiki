@@ -1,20 +1,24 @@
 <template>
   <div :class="['input', { invalid: hasAnyErrors }]">
     <slot />
-    <div v-if="hasAnyErrors">
-      <div
-        v-for="(error, index) in activeErrorMessages"
-        :key="index"
-        class="error">
-        {{ error }}
+    <transition
+      name="top-slide-fade"
+      mode="out-in">
+      <div v-if="hasAnyErrors">
+        <div
+          v-for="(error, index) in activeErrorMessages"
+          :key="index"
+          class="error">
+          {{ error }}
+        </div>
+        <div
+          v-for="(error, index) in serverErrors"
+          :key="index"
+          class="error">
+          {{ error }}
+        </div>
       </div>
-      <div
-        v-for="(error, index) in serverErrors"
-        :key="index"
-        class="error">
-        {{ error }}
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 

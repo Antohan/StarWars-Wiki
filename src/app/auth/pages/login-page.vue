@@ -60,8 +60,36 @@ export default {
     },
     serverErrors: {},
   }),
+  watch: {
+    'form.email': {
+      handler() {
+        if ('email' in this.serverErrors) {
+          delete this.serverErrors.email;
+        }
+      },
+    },
+    'form.password': {
+      handler() {
+        if ('password' in this.serverErrors) {
+          delete this.serverErrors.password;
+        }
+      },
+    },
+  },
   methods: {
     ...mapActions({ signIn: 'auth/SIGN_IN' }),
+    handleServerErrors(error) {
+      if (error.message === 'INVALID_PASSWORD') {
+        this.serverErrors = {
+          password: ['Invalid password'],
+        };
+      }
+      if (error.message === 'EMAIL_NOT_FOUND') {
+        this.serverErrors = {
+          email: ['Email not found'],
+        };
+      }
+    },
     submit() {
       this.$v.$touch();
 
@@ -70,21 +98,8 @@ export default {
       }
 
       this.signIn(this.form)
-        .then(() => {
-          this.$router.push({ name: 'welcome' });
-        })
-        .catch((error) => {
-          if (error.message === 'INVALID_PASSWORD') {
-            this.serverErrors = {
-              password: ['Invalid password'],
-            };
-          }
-          if (error.message === 'EMAIL_NOT_FOUND') {
-            this.serverErrors = {
-              email: ['Email not found'],
-            };
-          }
-        });
+        .then(() => this.$router.push({ name: 'welcome' }))
+        .catch(this.handleServerErrors);
     },
   },
 };

@@ -7,23 +7,36 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
 }
 
 button {
-  background: none;
-  background-color: $button-base-fone-color;
-  border: 1px solid $base-color;
-  border-radius: 3px;
+  outline-width: 0;
+  border: 1px solid $button-base-fone-color;
+  border-radius: 15px;
   box-sizing: border-box;
-  padding: 5px 10px;
+  margin: 5px;
+  padding: 5px 20px;
   text-transform: uppercase;
   font-size: 0.8em;
   cursor: pointer;
-  transition: all .3s;
+  transition: all .2s;
+  color: #fff;
 
-  &:hover {
-    color: #fff;
-    background-color: $base-color;
+  &.primary {
+    background-color: $button-base-fone-color;
+  }
+
+  &.secondary {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: $default-color;
+
+    &:hover {
+      color: #fff;
+      border-color: #fff;
+    }
   }
 }
 
@@ -42,21 +55,22 @@ button {
     padding: 5px;
     box-sizing: border-box;
     border-radius: 3px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(0,0,0,0);
+    outline-width: 0;
+    outline-color: rgba(255,255,255,0.2);
+    color: #fff;
+    transition: all 0.2s;
   }
 
   &.invalid input {
-    border-color: $error-color;
-  }
-
-  .invalid label span {
-    color: $error-color;
+    border-color: $error-border-color;
   }
 
   .error {
     position: absolute;
     font-size: 0.8em;
-    color: $error-color;
-    transition: all .3s;
+    color: $error-test-color;
+    transition: all .2s;
   }
 }

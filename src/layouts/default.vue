@@ -11,7 +11,7 @@
       <router-link
         :to="{name: 'login'}"
         :class="$style.login">
-        Log in
+        log in
       </router-link>
     </header>
 
@@ -25,7 +25,7 @@
               :to="{name: 'login'}"
               :class="$style.login">
               <div index="1">
-                Log in
+                log in
               </div>
             </router-link>
           </div>
@@ -58,9 +58,9 @@ export default {
 
 .header {
   width: 100%;
-  height: 60px;
+  height: 59px;
   z-index: 80;
-  box-shadow: 2px 2px 5px 0 rgba(0,0,0,.095);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +68,7 @@ export default {
 
 .menuBtn {
   font-size: 24px;
-  color: $base-color;
+  color: $default-color;
   margin: 0 10px;
   background: none;
   border: none;
@@ -78,7 +78,7 @@ export default {
   &:active,
   &:hover,
   &:focus {
-    color: $base-color;
+    color: $default-color;
   }
 }
 
@@ -89,17 +89,21 @@ export default {
 
 .login {
   text-decoration: none;
-  color: $base-color;
+  color: $default-color;
   margin: 0 10px;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 .aside {
   position: absolute;
   left: 0;
-  background-color: #f9f9f9;
   width: 300px;
   height: calc(100% - 60px);
   z-index: 70;
+  border-right: 1px solid rgba(255,255,255,0.2);
   box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }
 

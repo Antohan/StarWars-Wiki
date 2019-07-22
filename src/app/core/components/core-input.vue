@@ -1,4 +1,3 @@
-
 <template>
   <form-group
     v-bind="$attrs"

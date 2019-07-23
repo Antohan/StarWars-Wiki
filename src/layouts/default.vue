@@ -1,7 +1,7 @@
 <template>
   <section :class="$style.host">
     <header :class="$style.header">
-      <router-link :to="{ name: 'welcome' }">
+      <router-link :to="{ name: 'home' }">
         <logo style="width:100px;height:60px;" />
       </router-link>
       <button
@@ -18,7 +18,7 @@
       </router-link>
     </header>
 
-    <div style="height:100%;">
+    <div :class="$style.content">
       <transition name="left-slide">
         <aside
           v-show="show"
@@ -74,6 +74,8 @@ export default {
 .header {
   width: 100%;
   height: 59px;
+  padding: 0 30px;
+  box-sizing: border-box;
   z-index: 80;
   border-bottom: 1px solid $base-border-color;
   display: flex;
@@ -110,6 +112,10 @@ export default {
   &:hover {
     color: #fff;
   }
+}
+
+.content {
+  height: calc(100% - 60px);
 }
 
 .aside {

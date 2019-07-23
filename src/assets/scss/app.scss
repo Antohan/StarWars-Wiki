@@ -11,6 +11,11 @@ html, body {
   color: $base-text-color;
 }
 
+a {
+  text-decoration: none;
+  color: $base-text-color;
+}
+
 button {
   outline-width: 0;
   border: 1px solid $base-button-color;

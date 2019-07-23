@@ -1,6 +1,8 @@
 <template>
   <section :class="$style.container">
-    <div>Welcome</div>
+    <section class="intro">
+      A long time ago, in a galaxy far,<br> far away....
+    </section>
   </section>
 </template>
 

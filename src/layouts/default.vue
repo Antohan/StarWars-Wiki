@@ -1,6 +1,9 @@
 <template>
-  <section style="height:100%;">
+  <section :class="$style.host">
     <header :class="$style.header">
+      <router-link :to="{ name: 'welcome' }">
+        <logo style="width:100px;height:60px;" />
+      </router-link>
       <button
         type="text"
         :class="$style.menuBtn"
@@ -15,7 +18,7 @@
       </router-link>
     </header>
 
-    <div>
+    <div style="height:100%;">
       <transition name="left-slide">
         <aside
           v-show="show"
@@ -32,7 +35,7 @@
         </aside>
       </transition>
 
-      <div :classe="$style.content">
+      <div style="height:100%;">
         <router-view />
       </div>
     </div>
@@ -42,8 +45,13 @@
 <script>
 import { mapGetters } from 'vuex';
 
+import Logo from '@/assets/svg/logo';
+
 export default {
   name: 'DefaultLayout',
+  components: {
+    Logo,
+  },
   data: () => ({
     show: false,
   }),
@@ -56,11 +64,18 @@ export default {
 <style lang="scss" module>
 @import "@/assets/scss/app.scss";
 
+.host {
+  height: 100%;
+  min-width: 840px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 .header {
   width: 100%;
   height: 59px;
   z-index: 80;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid $base-border-color;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,11 +118,7 @@ export default {
   width: 300px;
   height: calc(100% - 60px);
   z-index: 70;
-  border-right: 1px solid rgba(255,255,255,0.2);
+  border-right: 1px solid $base-border-color;
   box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
-}
-
-.content {
-  height: 100%;
 }
 </style>

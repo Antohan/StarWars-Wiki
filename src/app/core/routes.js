@@ -3,8 +3,7 @@ import App from '@/App';
 const routes = [
   {
     path: '/',
-    redirect: 'welcome',
-    name: 'home',
+    redirect: 'home',
     component: App,
   },
   {

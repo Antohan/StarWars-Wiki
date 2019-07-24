@@ -35,3 +35,17 @@
 .left-slide-enter, .left-slide-leave-active{
   transform: translateX(-300px);
 }
+
+/*************************/
+/* Right slide transition */
+/*************************/
+.right-slide-enter-active {
+  transition: all .25s ease-out;
+}
+
+.right-slide-leave-active{
+  transition: all .25s ease-in;
+}
+.right-slide-enter, .right-slide-leave-active{
+  transform: translateX(450px);
+}

@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 import core from '@/app/core/routes';
 import auth from '@/app/auth/routes';
-import client from '@/app/client/routes';
+import films from '@/app/films/routes';
 
 Vue.use(Router);
 
@@ -13,6 +13,6 @@ export default new Router({
   routes: [
     ...core,
     ...auth,
-    ...client,
+    ...films,
   ],
 });

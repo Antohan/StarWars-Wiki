@@ -3,8 +3,16 @@ import App from '@/App';
 const routes = [
   {
     path: '/',
-    redirect: 'home',
+    redirect: 'welcome',
     component: App,
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/app/core/pages/home-page.vue'),
+    meta: {
+      layout: 'default',
+    },
   },
   {
     path: '/welcome',

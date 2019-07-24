@@ -4,8 +4,15 @@ const routes = [
   {
     path: '/',
     redirect: 'welcome',
-    name: 'home',
     component: App,
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/app/core/pages/home-page.vue'),
+    meta: {
+      layout: 'default',
+    },
   },
   {
     path: '/welcome',

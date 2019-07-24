@@ -11,6 +11,11 @@ html, body {
   color: $base-text-color;
 }
 
+a {
+  text-decoration: none;
+  color: $base-text-color;
+}
+
 button {
   outline-width: 0;
   border: 1px solid $base-button-color;
@@ -76,5 +81,23 @@ button {
     font-size: 0.8em;
     color: $error-test-color;
     transition: all .2s;
+  }
+}
+
+.plate {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 270px;
+  position: relative;
+  padding: 10px;
+  margin: 5px;
+  vertical-align: top;
+  border: 1px solid $base-border-color;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid #ffe81f;
   }
 }

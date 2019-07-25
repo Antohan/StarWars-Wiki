@@ -1,13 +1,11 @@
 <template>
   <section :class="$style.host">
     <transition name="right-slide">
-      <aside
+      <home-sidebar
         v-show="showInfo"
-        :class="$style.aside">
-        <div>
-          film data
-        </div>
-      </aside>
+        id="sidebar"
+        ref="sidebar"
+        @close="closeSidebar" />
     </transition>
 
     <div :class="$style.content">
@@ -20,21 +18,36 @@
 </template>
 
 <script>
-import { FilmsSection } from '@/app/films/components';
+import Vue from 'vue';
+import { FilmsSection, FilmInfo } from '@/app/films/components';
+import HomeSidebar from '../components/home-sidebar';
 
 export default {
   components: {
     FilmsSection,
+    HomeSidebar,
   },
   data: () => ({
-    showInfo: false,
+    showInfo: true,
+    about: null,
   }),
   mounted() {
     // TODO: fetch data
   },
   methods: {
     handleShowInfo() {
-      this.showInfo = !this.showInfo;
+      this.showInfo = true;
+
+      const Film = Vue.extend(FilmInfo);
+      const instance = new Film({
+        propsData: { film: { kek: 'kek' } },
+      });
+      instance.$mount();
+
+      this.$refs.sidebar.$el.appendChild(instance.$el);
+    },
+    closeSidebar() {
+      debugger;
     },
   },
 };
@@ -49,20 +62,11 @@ export default {
   width: 100%;
 }
 
-.aside {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 490px;
-  height: 100%;
-  border-left: 1px solid $base-border-color;
-  box-sizing: border-box;
-}
-
 .content {
   height: 100%;
-  width: 900px;
+  width: 950px;
   padding: 30px 30px 60px;
   box-sizing: border-box;
+  border-right: 1px solid $base-border-color;
 }
 </style>

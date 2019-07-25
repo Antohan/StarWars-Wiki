@@ -36,6 +36,8 @@ export default {
 .row {
   max-height: 350px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
 
 .link {

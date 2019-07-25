@@ -8,7 +8,9 @@
 
 <script>
 export default {
-
+  mounted() {
+    setTimeout(() => this.$router.push({ name: 'home' }), 3000);
+  },
 };
 </script>
 

@@ -46,9 +46,6 @@
 .right-slide-leave-active{
   transition: all .25s ease-in;
 }
-.right-slide-enter {
+.right-slide-enter, .right-slide-leave-active {
   transform: translateX(450px);
-}
-.right-slide-leave-active {
-  display: none;
 }

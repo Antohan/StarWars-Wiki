@@ -1,18 +1,15 @@
 <template>
   <section :class="$style.host">
-    <transition name="right-slide">
-      <home-sidebar
-        v-show="showInfo"
-        id="sidebar"
-        ref="sidebar"
-        @close="closeSidebar" />
-    </transition>
+    <home-sidebar
+      id="sidebar"
+      ref="sidebar"
+      :show="showSidebar" />
 
     <div :class="$style.content">
       <films-section
         title="Films"
         description="Movies"
-        @show-info="handleShowInfo" />
+        @show-info="handleShowInfo($event)" />
     </div>
   </section>
 </template>
@@ -28,26 +25,32 @@ export default {
     HomeSidebar,
   },
   data: () => ({
-    showInfo: true,
-    about: null,
+    sidebarInfo: null,
+    showSidebar: false,
   }),
   mounted() {
     // TODO: fetch data
   },
   methods: {
-    handleShowInfo() {
-      this.showInfo = true;
+    handleShowInfo(filmId) {
+      if (this.sidebarInfo) {
+        this.sidebarInfo.$destroy();
+        this.showSidebar = false;
+      }
 
-      const Film = Vue.extend(FilmInfo);
-      const instance = new Film({
-        propsData: { film: { kek: 'kek' } },
+      const sidebar = this.$refs.sidebar.$el;
+      const Component = Vue.extend(FilmInfo);
+      this.sidebarInfo = new Component({
+        propsData: { filmId },
+        destroyed() {
+          sidebar.removeChild(this.$el);
+        },
       });
-      instance.$mount();
+      this.sidebarInfo.$mount();
 
-      this.$refs.sidebar.$el.appendChild(instance.$el);
-    },
-    closeSidebar() {
-      debugger;
+      sidebar.appendChild(this.sidebarInfo.$el);
+
+      this.showSidebar = true;
     },
   },
 };

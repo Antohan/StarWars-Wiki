@@ -49,8 +49,8 @@ export default {
     ],
   }),
   methods: {
-    handleFilmClick() {
-      this.$emit('show-info');
+    handleFilmClick(filmId) {
+      this.$emit('show-info', filmId);
     },
   },
 };

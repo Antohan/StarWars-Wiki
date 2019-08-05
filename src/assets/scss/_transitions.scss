@@ -29,10 +29,10 @@
 /*************************/
 /* Left slide transition */
 /*************************/
-.left-slide-enter-active, .left-slide-leave-active{
+.left-slide-enter-active, .left-slide-leave-active {
   transition: all .4s cubic-bezier(.65, .05, .36, 1);
 }
-.left-slide-enter, .left-slide-leave-active{
+.left-slide-enter, .left-slide-leave-active {
   transform: translateX(-300px);
 }
 
@@ -43,7 +43,7 @@
   transition: all .25s ease-out;
 }
 
-.right-slide-leave-active{
+.right-slide-leave-active {
   transition: all .25s ease-in;
 }
 .right-slide-enter, .right-slide-leave-active {

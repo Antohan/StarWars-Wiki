@@ -50,6 +50,8 @@
 import { required, email } from 'vuelidate/lib/validators';
 import { mapActions } from 'vuex';
 
+import { SIGN_IN } from '../store';
+
 export default {
   validations: {
     form: {
@@ -81,7 +83,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions({ signIn: 'auth/SIGN_IN' }),
+    ...mapActions({ signIn: `auth/${[SIGN_IN]}` }),
     handleServerErrors(error) {
       if (error.message === 'INVALID_PASSWORD') {
         this.serverErrors = {

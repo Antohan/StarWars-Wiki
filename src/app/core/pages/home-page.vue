@@ -1,9 +1,8 @@
 <template>
   <section :class="$style.host">
-    <home-sidebar
-      id="sidebar"
+    <aside
       ref="sidebar"
-      :show="showSidebar" />
+      :class="$style.sidebar" />
 
     <div :class="$style.content">
       <films-section
@@ -17,15 +16,12 @@
 <script>
 import Vue from 'vue';
 import { FilmsSection, FilmInfo } from '@/app/films/components';
-import HomeSidebar from '../components/home-sidebar';
 
 export default {
   components: {
     FilmsSection,
-    HomeSidebar,
   },
   data: () => ({
-    sidebarInfo: null,
     showSidebar: false,
   }),
   mounted() {
@@ -33,24 +29,22 @@ export default {
   },
   methods: {
     handleShowInfo(filmId) {
-      if (this.sidebarInfo) {
-        this.sidebarInfo.$destroy();
-        this.showSidebar = false;
+      const { sidebar } = this.$refs;
+
+      if (sidebar.children.length > 0) {
+        sidebar.removeChild(sidebar.children[0]);
       }
 
-      const sidebar = this.$refs.sidebar.$el;
       const Component = Vue.extend(FilmInfo);
-      this.sidebarInfo = new Component({
+      const sidebarInfo = new Component({
         propsData: { filmId },
         destroyed() {
           sidebar.removeChild(this.$el);
         },
       });
-      this.sidebarInfo.$mount();
+      sidebarInfo.$mount();
 
-      sidebar.appendChild(this.sidebarInfo.$el);
-
-      this.showSidebar = true;
+      sidebar.appendChild(sidebarInfo.$el);
     },
   },
 };
@@ -63,6 +57,16 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 490px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px;
 }
 
 .content {

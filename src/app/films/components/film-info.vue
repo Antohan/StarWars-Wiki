@@ -1,10 +1,14 @@
 <template>
-  <div :class="$style.host">
-    <a
-      :class="$style.close"
-      @click="close">x</a>
-    Film ID: {{ filmId }}
-  </div>
+  <transition name="right-slide">
+    <div
+      v-show="isShow"
+      :class="$style.host">
+      <a
+        :class="$style.close"
+        @click="close()">x</a>
+      Film ID: {{ filmId }}
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -13,9 +17,14 @@ export default {
   props: {
     filmId: { type: Number, required: true },
   },
+  data: () => ({
+    isShow: false,
+  }),
+  mounted() {
+    this.isShow = true;
+  },
   methods: {
     close() {
-      this.close = true;
       this.$destroy();
     },
   },

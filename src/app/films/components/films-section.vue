@@ -6,6 +6,7 @@
     <films-nameplate
       v-for="(film, index) in films"
       :key="index"
+      :active="isActive(film.id)"
       :title="film.title"
       :director="film.director"
       :release-date="film.releaseDate"
@@ -14,6 +15,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import FilmsNameplate from './films-nameplate';
 
 export default {
@@ -48,14 +51,16 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapState('films', { active: ({ showFilmInfoId }) => showFilmInfoId }),
+  },
   methods: {
+    isActive(filmId) {
+      return this.active === filmId;
+    },
     handleFilmClick(filmId) {
       this.$emit('show-info', filmId);
     },
   },
 };
 </script>
-
-<style>
-
-</style>

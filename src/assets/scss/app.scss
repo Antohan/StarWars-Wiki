@@ -100,4 +100,9 @@ button {
   &:hover {
     border: 1px solid #ffe81f;
   }
+
+  &.active {
+    border: 1px solid #ffe81f;
+    pointer-events: none;
+  }
 }

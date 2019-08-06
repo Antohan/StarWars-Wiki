@@ -15,7 +15,10 @@
 
 <script>
 import Vue from 'vue';
+import { mapState, mapActions } from 'vuex';
+
 import { FilmsSection, FilmInfo } from '@/app/films/components';
+import { SET_SHOWING_FILM } from '../../films/store';
 
 export default {
   components: {
@@ -24,25 +27,32 @@ export default {
   data: () => ({
     showSidebar: false,
   }),
+  computed: {
+    ...mapState('films', ['showFilmInfoId']),
+  },
   mounted() {
     // TODO: fetch data
   },
   methods: {
+    ...mapActions({ setShowingFilm: `films/${SET_SHOWING_FILM}` }),
     handleShowInfo(filmId) {
       const { sidebar } = this.$refs;
 
       if (sidebar.children.length > 0) {
+        this.setShowingFilm(null);
         sidebar.removeChild(sidebar.children[0]);
       }
+
+      this.setShowingFilm(filmId);
 
       const Component = Vue.extend(FilmInfo);
       const sidebarInfo = new Component({
         propsData: { filmId },
+        beforeDestroy: () => this.setShowingFilm(null),
         destroyed() {
           sidebar.removeChild(this.$el);
         },
-      });
-      sidebarInfo.$mount();
+      }).$mount();
 
       sidebar.appendChild(sidebarInfo.$el);
     },

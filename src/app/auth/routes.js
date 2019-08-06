@@ -2,7 +2,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/app/auth/pages/login-page.vue'),
+    component: () => import(/* webpackChunkName: "login" */'@/app/auth/pages/login-page.vue'),
     meta: {
       layout: 'auth-layout',
     },
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/registration',
     name: 'registration',
-    component: () => import('@/app/auth/pages/registration-page.vue'),
+    component: () => import(/* webpackChunkName: "registration" */'@/app/auth/pages/registration-page.vue'),
     meta: {
       layout: 'auth-layout',
     },

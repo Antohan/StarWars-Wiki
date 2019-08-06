@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: () => import('@/app/core/pages/home-page.vue'),
+    component: () => import(/* webpackChunkName: "home" */'@/app/core/pages/home-page.vue'),
     meta: {
       layout: 'default',
     },
@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/welcome',
     name: 'welcome',
-    component: () => import('@/app/core/pages/welcome-page.vue'),
+    component: () => import(/* webpackChunkName: "welcome" */'@/app/core/pages/welcome-page.vue'),
     meta: {
       layout: 'default',
     },
@@ -25,7 +25,7 @@ const routes = [
   {
     path: '*',
     name: 'error',
-    component: () => import('@/app/core/pages/404-page.vue'),
+    component: () => import(/* webpackChunkName: "404" */'@/app/core/pages/404-page.vue'),
     meta: {
       layout: 'default',
     },

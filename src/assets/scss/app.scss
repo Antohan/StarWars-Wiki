@@ -88,9 +88,8 @@ button {
   cursor: pointer;
   position: relative;
   display: inline-block;
-  width: 200px;
+  min-width: 200px;
   height: 270px;
-  position: relative;
   padding: 10px;
   margin: 5px;
   vertical-align: top;

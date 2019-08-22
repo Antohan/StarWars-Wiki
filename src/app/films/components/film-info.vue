@@ -6,7 +6,14 @@
       <a
         :class="$style.close"
         @click="close()">x</a>
-      Film ID: {{ filmId }}
+      <div :class="$style.container">
+        <div>{{ film.title }}</div>
+        <div>Director: {{ film.director }}</div>
+        <div>Release date: {{ film.releaseDate }}</div>
+        <div :class="$style.description">
+          {{ film.description }}
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -15,7 +22,7 @@
 export default {
   name: 'FilmInfo',
   props: {
-    filmId: { type: Number, required: true },
+    film: { type: Object, required: true },
   },
   data: () => ({
     isShow: false,
@@ -49,5 +56,14 @@ export default {
   &:hover {
     color: #fff;
   }
+}
+
+.container {
+  display: block;
+}
+
+.description {
+  white-space: pre-wrap;
+  text-align: center;
 }
 </style>

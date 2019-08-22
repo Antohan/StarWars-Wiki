@@ -34,6 +34,9 @@ const getters = {
   isFilmListEmpty(state) {
     return state.films.length === 0;
   },
+  showFilmById(state) {
+    return state.films.find(film => film.id === state.showFilmInfoId);
+  },
 };
 
 export default {

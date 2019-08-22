@@ -15,7 +15,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 import { FilmsSection, FilmInfo } from '@/app/films/components';
 import { SET_SHOWING_FILM } from '../../films/store';
@@ -29,6 +29,7 @@ export default {
   }),
   computed: {
     ...mapState('films', ['showFilmInfoId']),
+    ...mapGetters('films', ['showFilmById']),
   },
   mounted() {
     // TODO: fetch data
@@ -47,7 +48,7 @@ export default {
 
       const Component = Vue.extend(FilmInfo);
       const sidebarInfo = new Component({
-        propsData: { filmId },
+        propsData: { film: this.showFilmById },
         beforeDestroy: () => this.setShowingFilm(null),
         destroyed() {
           sidebar.removeChild(this.$el);
